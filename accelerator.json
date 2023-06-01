@@ -1,0 +1,65 @@
+{
+    "id": "6f189a08-c788-4fc3-a4d8-b58de386e141",
+    "name": "Get Opportunity Owners Email by Account Id Data Action Module",
+    "description": "A Terraform/CX as Code remote module for the following Salesforce API operation: Get Opportunity Owners Email by Account Id",
+    "origin": "genesys",
+    "type": "module",
+    "classification": null,
+    "tags": [],
+    "permissions": [],
+    "documentation": [],
+    "presentation": [
+        {
+            "title": "Page 1",
+            "schema": {
+                "title": "Data Action Setup",
+                "description": "Setup your data action deployment",
+                "type": "object",
+                "properties": [
+                    {
+                        "action_name": {
+                            "description": "The name for the data action",
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "action_category": {
+                            "description": "Category of action",
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "integration_id": {
+                            "description": "The ID of the integration this action is associated with.",
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "secure_data_action": {
+                            "description": "Indication of whether or not the action is designed to accept sensitive data.",
+                            "type": "boolean",
+                            "default": "false"
+                        }
+                    }
+                ],
+                "required": [
+                    "action_name",
+                    "action_category",
+                    "integration_id"
+                ]
+            }
+        }
+    ],
+    "results": {
+        "entities": [
+            {
+                "type": "dataAction",
+                "visibility": "VISIBLE"
+            },
+            {
+                "type": "integration",
+                "visibility": "VISIBLE"
+            }
+        ]
+    }
+}

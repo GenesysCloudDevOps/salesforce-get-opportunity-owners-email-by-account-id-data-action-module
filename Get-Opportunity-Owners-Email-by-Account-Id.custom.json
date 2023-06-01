@@ -1,0 +1,58 @@
+{
+  "name": "Get Opportunity Owners Email by Account Id",
+  "integrationType": "salesforce-datadip",
+  "actionType": "custom",
+  "config": {
+    "request": {
+      "requestUrlTemplate": "/services/data/v54.0/query/?q=$esc.url(\"SELECT Owner.Id, Owner.Email, Id FROM Opportunity WHERE Account.Id = '${input.AccountId}'\")",
+      "requestType": "GET",
+      "headers": {
+      	"Content-Type": "application/json",
+        "UserAgent": "PureCloudIntegrations/1.0"
+      },
+      "requestTemplate": "${input.rawRequest}"
+    },
+    "response": {
+      "translationMap": {
+        "Email": "$.records[*].Owner.Email"
+      },
+      "translationMapDefaults": {},
+      "successTemplate": "{\"Owners\": ${Email}}"
+    }
+  },
+  "contract": {
+    "input": {
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-04/schema#",
+        "description": "A phone number-based request.",
+        "type": "object",
+        "required": [
+          "AccountId"
+        ],
+        "properties": {
+          "AccountId": {
+            "description": "Account Id to which the opportunity is related",
+            "type": "string"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "output": {
+      "successSchema": {
+        "type": "object",
+        "properties": {
+          "Owners": {
+            "type": "array",
+            "items": {
+              "title": "Email",
+              "type": "string"
+            }
+          }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "secure": false
+}
