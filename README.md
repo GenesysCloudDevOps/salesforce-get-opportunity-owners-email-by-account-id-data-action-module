@@ -6,7 +6,7 @@ Shown below is an example of how to configure the remote module.
 
 ```hcl
 module "data_action" {
-    source             = "git::https://github.com/GenesysCloudDevOps/salesforce-get-opportunity-owners-email-by-account-id.custom-data-action-module.git?ref=v1.0.0"
+    source             = "git::https://github.com/GenesysCloudDevOps/salesforce-get-opportunity-owners-email-by-account-id-data-action-module.git?ref=v1.0.0"
     action_name        = "Get Opportunity Owners Email by Account Id"
     action_category    = "${module.integration.integration_name}"
     integration_id     = "${module.integration.integration_id}"
